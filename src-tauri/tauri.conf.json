@@ -22,7 +22,7 @@
         "alwaysOnTop": true,
         "skipTaskbar": true,
         "resizable": false,
-        "visible": false,
+        "visible": true,
         "url": "src/windows/pet/index.html"
       },
       {

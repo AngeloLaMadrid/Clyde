@@ -202,6 +202,7 @@ fn apply_click_through(app: &AppHandle, enabled: bool) {
     let Some(hit) = app.get_webview_window("hit") else {
         return;
     };
+    #[cfg(not(target_os = "linux"))]
     let _ = hit.set_ignore_cursor_events(enabled);
     if enabled {
         windows::hide_hit_window(app);
@@ -1693,6 +1694,7 @@ fn setup_pet_window(app: &AppHandle, prefs: &prefs::Prefs) -> Option<windows::Wi
     if let Err(e) = pet.set_background_color(Some(Color(0, 0, 0, 0))) {
         eprintln!("Clyde: set_background_color failed: {e}");
     }
+    #[cfg(not(target_os = "linux"))]
     let _ = pet.set_ignore_cursor_events(true);
     apply_pet_window_geometry(app, &resolved_bounds);
     macos_spaces::apply_space_follow(&pet);
